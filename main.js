@@ -2,6 +2,9 @@ let color = "black"
 
 let click = false;
 
+
+/* sets the default board to 16 "tiles", listens for a click to on/of to
+start changing "tiles" (divs) */
 document.addEventListener('DOMContentLoaded', function() {
     createBoard(16);
 
@@ -17,15 +20,16 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     })
 
+    /* calls getSize function when the select button is clicked */
     let btnPopup = document.querySelector("#popup");
     btnPopup.addEventListener('click', function () {
         let size = getSize();
         createBoard(size);
     })
-    console.log("heyo");
+    /* console.log("heyo"); */
 })
 
-
+/* creates the board based on the chosen size */
 function createBoard(size) {
     let board = document.querySelector(".board");
 
@@ -44,7 +48,7 @@ function createBoard(size) {
     }
 }
 
-
+/* prompts the user to input what size board they want*/
 function getSize() {
     let input = prompt("Enter the size of the board? (0 - 100)");
     let message = document.querySelector("#message");
@@ -59,7 +63,7 @@ function getSize() {
     }
 }
 
-
+/* depending on the button pressed function gets the color */
 function colorDiv() {
     if (click) {
         if (color == "random") {
@@ -75,6 +79,7 @@ function setColor(colorChoice) {
     color = colorChoice;
 }
 
+/* resets all "tiles" (divs) to color white */
 function resetBoard() {
     let allDivs = document.querySelectorAll('div');
     allDivs.forEach((div) => div.style.backgroundColor = "white")
